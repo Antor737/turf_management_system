@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Slot extends Model
+{
+protected $fillable = [
+    'time',
+    'date',
+    'is_booked',
+    'user_id'
+];}
