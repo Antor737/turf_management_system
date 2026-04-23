@@ -141,7 +141,6 @@
 </div>
 
 
-<!-- 🟢 MAIN APP (HIDDEN FIRST) -->
 <div id="appBox" style="display:none;">
 
     <div style="text-align:center; margin-bottom:20px;">
@@ -157,7 +156,6 @@
 
 <script>
 
-// 🔄 SWITCH AUTH
 function showRegister() {
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('registerForm').style.display = 'block';
@@ -168,7 +166,6 @@ function showLogin() {
     document.getElementById('registerForm').style.display = 'none';
 }
 
-// 🟢 REGISTER
 async function register() {
     let name = document.getElementById('regName').value;
     let email = document.getElementById('regEmail').value;
@@ -188,7 +185,6 @@ async function register() {
     }
 }
 
-// 🔐 LOGIN (ONLY ONE)
 async function login() {
     let email = document.getElementById('loginEmail').value;
     let password = document.getElementById('loginPassword').value;
@@ -205,7 +201,7 @@ async function login() {
         localStorage.setItem("user", JSON.stringify(user));
 
         document.getElementById('authBox').style.display = 'none';
-        document.getElementById('appBox').style.display = 'block'; // 🔥 MUST
+        document.getElementById('appBox').style.display = 'block'; 
 
         loadSlots();
 
@@ -215,13 +211,11 @@ async function login() {
     }
 }
 
-// 🌙 THEME TOGGLE
 function toggleMode() {
     document.body.classList.toggle('dark');
     document.body.classList.toggle('light');
 }
 
-// 🔔 POPUP
 function showPopup(message, type) {
     let popup = document.getElementById('popup');
 
@@ -233,7 +227,6 @@ function showPopup(message, type) {
     }, 2000);
 }
 
-// 📦 LOAD SLOTS
 async function loadSlots() {
 
     let date = document.getElementById('selectedDate')?.value;
@@ -249,7 +242,6 @@ async function loadSlots() {
         url += '?date=' + date;
     }
 
-    // 🔥 FIX: proper query handling
     url += (url.includes('?') ? '&' : '?') + 't=' + Date.now();
 
     let res = await fetch(url);
@@ -270,9 +262,9 @@ async function loadSlots() {
 
     if (isBooked) {
         if (user && slot.user_id == user.id) {
-            text = "🟢 Booked by You";   // ✅ no emoji (as you wanted before)
+            text = "🟢 Booked by You";  
         } else {
-            text = "🔴Booked";
+            text = "Booked";
         }
     }
 
@@ -302,11 +294,9 @@ async function loadSlots() {
         })
     });
 
-    let updated = await res.json(); // 🔥 ONLY ONCE
-
+    let updated = await res.json(); 
     if (res.ok) {
 
-        // ✅ update from backend
         slot.is_booked = updated.is_booked;
         slot.user_id = updated.user_id;
 
