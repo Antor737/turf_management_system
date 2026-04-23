@@ -13,8 +13,8 @@ return new class extends Migration
     {
          Schema::create('slots', function (Blueprint $table) {
         $table->id();
-        $table->string('time');          // Slot time
-        $table->boolean('is_booked')->default(false);  // Booking status
+        $table->string('time');          
+        $table->boolean('is_booked')->default(false);  
         $table->timestamps();
     });
     }
